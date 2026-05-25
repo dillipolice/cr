@@ -35,13 +35,6 @@ public class PetController {
 
         Pet savedPet = petService.savePet(pet);
 
-        if (owner.getPets() == null) {
-            owner.setPets(new java.util.ArrayList<>());
-        }
-
-        owner.getPets().add(savedPet);
-        customerService.saveCustomer(owner);
-
         petDTO.setId(savedPet.getId());
 
         return petDTO;
@@ -89,6 +82,7 @@ public class PetController {
                 })
                 .toList();
     }
+
     @GetMapping("/owner/{ownerId}")
     public List<PetDTO> getPetsByOwner(@PathVariable long ownerId) {
 

@@ -16,7 +16,7 @@ public class Customer {
 
     private String notes;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Pet> pets;
 
     public Long getId() {

@@ -2,11 +2,11 @@ package com.udacity.jdnd.course3.critter.user;
 
 import com.udacity.jdnd.course3.critter.entity.Customer;
 import com.udacity.jdnd.course3.critter.entity.Employee;
+import com.udacity.jdnd.course3.critter.repository.PetRepository;
 import com.udacity.jdnd.course3.critter.service.CustomerService;
 import com.udacity.jdnd.course3.critter.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.udacity.jdnd.course3.critter.entity.Pet;
 
 import java.time.DayOfWeek;
 import java.util.List;
@@ -26,6 +26,9 @@ public class UserController {
 
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private PetRepository petRepository;
 
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO) {
@@ -55,11 +58,9 @@ public class UserController {
                     dto.setPhoneNumber(customer.getPhoneNumber());
                     dto.setNotes(customer.getNotes());
 
-                    List<Long> petIds = customer.getPets() == null
-                            ? new java.util.ArrayList<>()
-                            : customer.getPets()
+                    List<Long> petIds = petRepository.findByOwnerIdOrderByIdAsc(customer.getId())
                             .stream()
-                            .map(Pet::getId)
+                            .map(pet -> pet.getId())
                             .toList();
 
                     dto.setPetIds(petIds);
@@ -82,11 +83,9 @@ public class UserController {
         dto.setNotes(customer.getNotes());
 
         dto.setPetIds(
-                customer.getPets() == null
-                        ? List.of()
-                        : customer.getPets()
+                petRepository.findByOwnerIdOrderByIdAsc(customer.getId())
                         .stream()
-                        .map(Pet::getId)
+                        .map(pet -> pet.getId())
                         .toList()
         );
 

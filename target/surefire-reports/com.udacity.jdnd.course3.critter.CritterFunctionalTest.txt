@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.udacity.jdnd.course3.critter.CritterFunctionalTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 8.829 s <<< FAILURE! -- in com.udacity.jdnd.course3.critter.CritterFunctionalTest
-com.udacity.jdnd.course3.critter.CritterFunctionalTest.testFindPetsByOwner -- Time elapsed: 0.028 s <<< FAILURE!
+Tests run: 9, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 8.078 s <<< FAILURE! -- in com.udacity.jdnd.course3.critter.CritterFunctionalTest
+com.udacity.jdnd.course3.critter.CritterFunctionalTest.testFindPetsByOwner -- Time elapsed: 0.022 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <4> but was: <5>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
